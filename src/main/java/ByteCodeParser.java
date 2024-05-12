@@ -3,6 +3,6 @@ public class ByteCodeParser {
 
 
     public static ByteCode parse(String _s) {
-
+        return null;
     }
 }

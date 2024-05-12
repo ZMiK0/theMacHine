@@ -20,8 +20,22 @@ public class Command {
 
     public boolean execute(Engine _engine) {
         //pseudo
-        if(1 != 0) {
-            return true;
-        } else {return false;}
+        switch (this.command) {
+            case HELP: System.out.println(
+                    "HELP: Muestra esta ayuda\n" +
+                            "QUIT: Cierra la aplicacion\n" +
+                            "RUN: Ejecuta el programa\n" +
+                            "NEWINST BYTECODE: Introduce una nueva instrucción al programa\n" +
+                            "RESET: Vacia el programa actual\n" +
+                            "REPLACE N: Reemplaza la instruccion N por la solicitada al usuario"
+            ); return true;
+            case QUIT:
+                System.out.println("APAGANDO EL SISTEMA");
+                _engine.end();
+                return true;
+            default:
+                System.out.println("No se ha podido ejecutar el comando");
+                return false;
+        }
     }
 }

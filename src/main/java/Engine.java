@@ -10,12 +10,24 @@ public class Engine {
         Memory memory = new Memory();
         OperandStack stack = new OperandStack();
 
-        System.out.print("-> ");
-        String instrucción = sc.next();
-        Command comando = CommandParser.parse(instrucción);
-
+        while(!this.end) {
+            System.out.print("[belz@maquinavirtual] -> ");
+            String instruccion = sc.next();
+            Command comando = CommandParser.parse(instruccion);
+            comando.execute(this);
+        }
 
 
 
     }
+
+    public void end() {
+        this.end = true;
+    }
 }
+
+/*
+Comienza la ejecución de NEWINST PUSH 22
+Programa almacenado:
+0: PUSH 22
+ */
