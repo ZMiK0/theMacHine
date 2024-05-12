@@ -14,7 +14,8 @@ public class CommandParser {
                 return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(particion[1]));
             case "replace":
                 return new Command(ENUM_COMMAND.REPLACE, ByteCodeParser.parse(particion[1]), Integer.parseInt(particion[2]));
+            default:
+                return new Command();
         }
-        return null;
     }
 }

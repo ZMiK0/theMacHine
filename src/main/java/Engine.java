@@ -14,7 +14,12 @@ public class Engine {
             System.out.print("[belz@maquinavirtual] -> ");
             String instruccion = sc.next();
             Command comando = CommandParser.parse(instruccion);
-            comando.execute(this);
+            if(comando.execute(this)) {
+                System.out.println();
+            } else {
+                System.out.println("No se ha podido ejecutar");
+            }
+
         }
 
 
