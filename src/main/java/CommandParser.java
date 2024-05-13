@@ -11,9 +11,14 @@ public class CommandParser {
             case "reset":
                 return new Command(ENUM_COMMAND.RESET);
             case "newinst":
-                return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(particion[1]));
+                if (particion.length == 3) {
+                    return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(particion[1], particion[2]));
+                } else if (particion.length == 2) {
+                    return new Command(ENUM_COMMAND.NEWINST, ByteCodeParser.parse(particion[1]));
+                }
+
             case "replace":
-                return new Command(ENUM_COMMAND.REPLACE, ByteCodeParser.parse(particion[1]), Integer.parseInt(particion[2]));
+                return new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(particion[1]));
             default:
                 return new Command();
         }

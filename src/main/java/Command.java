@@ -16,26 +16,26 @@ public class Command {
         this.instruction = _instruction;
     }
 
-    public Command(ENUM_COMMAND _command, ByteCode _instruction, Integer _replace) {
+    public Command(ENUM_COMMAND _command, Integer _replace) {
         this.command = _command;
-        this.instruction = _instruction;
         this.replace = _replace;
     }
 
     public boolean execute(Engine _engine) {
         try {
             switch (this.command) {
-                case HELP: System.out.println(
-                        "HELP: Muestra esta ayuda\n" +
-                                "QUIT: Cierra la aplicacion\n" +
-                                "RUN: Ejecuta el programa\n" +
-                                "NEWINST BYTECODE: Introduce una nueva instrucción al programa\n" +
-                                "RESET: Vacia el programa actual\n" +
-                                "REPLACE N: Reemplaza la instruccion N por la solicitada al usuario"
-                ); return true;
+                case HELP:
+                    return _engine.commandHelp();
                 case QUIT:
-                    System.out.println("APAGANDO EL SISTEMA");
-                    _engine.end();
+                    return _engine.commandEnd();
+                case RUN:
+                    return _engine.commandRun();
+                case NEWINST:
+                    return _engine.commandNewinst();
+                case RESET:
+                    return _engine.commandReset();
+                case REPLACE:
+                    System.out.println();
                     return true;
                 default:
                     return false;
@@ -47,3 +47,28 @@ public class Command {
 
     }
 }
+
+/*
+Comienza la ejecución de RUN
+El estado de la maquina tras ejecutar el bytecode PUSH 2 es:
+Estado de la CPU:
+Memoria: <vacia>
+Pila: 2
+El estado de la maquina tras ejecutar el bytecode PUSH 3 es:
+Estado de la CPU:
+Memoria: <vacia>
+Pila: 2 3
+El estado de la maquina tras ejecutar el bytecode SUB es:
+Estado de la CPU:
+Memoria: <vacia>
+Pila: -1
+El estado de la maquina tras ejecutar el bytecode STORE 4 es:
+Estado de la CPU:
+Memoria: [4]:-1
+Pila: <vacia>
+Programa almacenado:
+0: PUSH 2
+1: PUSH 3
+2: SUB
+3: STORE 4
+ */
