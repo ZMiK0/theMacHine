@@ -39,7 +39,7 @@ public class CPU {
     }
 
     public String toString() {
-        return "Estado de la CPU:\n" + memoria.toString() + "\n" + pila.toString();
+        return "\nEstado de la CPU:\n" + memoria.toString() + "\n" + pila.toString() + "\n-----------------";
     }
 
     public void runCPU() {

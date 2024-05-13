@@ -50,8 +50,7 @@ public class ByteCodeProgram {
         String mensaje = "";
         for(int i = 0; i < this.num_elements; i++) {
             if(!_cpu.isHalt() && _cpu.execute(this.program[i])) {
-
-                mensaje += this.program[i].toString() + "\n";
+                mensaje += "\n-----------------\nEl estado de la máquina tras ejecutar " + this.program[i].getName() + " " + this.program[i].getParam() + " es:\n" + _cpu.toString() + "\n";
             } else if (_cpu.isHalt()){
                 mensaje += "HALT\n";
             }
@@ -59,6 +58,10 @@ public class ByteCodeProgram {
         _cpu.erase();
         _cpu.runCPU();
         return mensaje;
+    }
+
+    public void reset() {
+        this.program = new ByteCode[this.size];
     }
 
     public ByteCode getProgram(int _i) {

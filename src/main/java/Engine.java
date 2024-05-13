@@ -19,11 +19,17 @@ public class Engine {
             System.out.print("[belz@maquinavirtual] -> ");
             String instruccion = sc.nextLine();
             Command comando = CommandParser.parse(instruccion);
-            if(comando.execute(this)) {
-                System.out.println();
-            } else {
-                System.out.println("No se ha podido ejecutar");
+            try {
+                System.out.println("Comienza la ejecución de " + comando.getCommand());
+                if(comando.execute(this)) {
+
+                } else {
+                    System.out.println("No se ha podido ejecutar");
+                }
+            } catch (Exception e) {
+                System.out.println("Error al ejecutar la instruccion");
             }
+
         }
     }
 
@@ -44,10 +50,8 @@ public class Engine {
     }
 
     public boolean commandRun() {
-        System.out.println(
-                "Comienza la ejecución de RUN"
-        );
-        program.runProgram(this.cpu);
+        System.out.println(this.program.runProgram(this.cpu));
+        System.out.println(this.program.toString());
         return true;
     }
 
@@ -62,7 +66,6 @@ public class Engine {
     }
 
     public boolean commandReset() {
-
         if(this.cpu.reset()) {
             System.out.println("Borrando el estado de la máquina");
         } else {

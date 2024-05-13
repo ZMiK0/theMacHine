@@ -21,6 +21,10 @@ public class Command {
         this.replace = _replace;
     }
 
+    public String getCommand() {
+        return command.toString();
+    }
+
     public ByteCode getInstruction() {
         return instruction;
     }
