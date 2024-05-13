@@ -12,8 +12,15 @@ public class ByteCode {
         this.name = _enumBytecode;
     }
 
-    //to string
-    //get instruction
-    //get param
+    public String toString() {
+        return name.toString() + " " + param;
+    }
+
+    public ENUM_BYTECODE getName() {
+        return name;
+    }
+    public int getParam() {
+        return param;
+    }
 
 }

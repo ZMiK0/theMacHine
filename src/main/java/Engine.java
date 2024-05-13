@@ -17,11 +17,7 @@ public class Engine {
             } else {
                 System.out.println("No se ha podido ejecutar");
             }
-
         }
-
-
-
     }
 
     public boolean commandEnd() {
@@ -57,6 +53,8 @@ public class Engine {
         System.out.println("Borrando el estado de la máquina");
         return true;
     }
+
+
 }
 
 
