@@ -88,7 +88,7 @@ public class CPU {
         this.runCPU();
         int e1 = this.pila.pop();
         int e2 = this.pila.pop();
-        int result = e1 / e2;
+        int result = e2 / e1;
         this.pila.push(result);
         return true;
     }
@@ -99,7 +99,6 @@ public class CPU {
         return true;
     }
 
-    //No se si debe de borrarse de la memoria
     public boolean loadMemoria(int _pos) {
         this.runCPU();
         this.memoria.read(_pos);

@@ -15,7 +15,6 @@ public class OperandStack {
         return this.num_elements == 0;
     }
 
-    //metodo meter en la pila
     public boolean push(int _elemento) {
         if(this.num_elements < MAX_NUM) {
             this.stack[this.num_elements] = _elemento;
@@ -26,13 +25,12 @@ public class OperandStack {
         }
     }
 
-    //metodo sacar de la pila
     public int pop() {
-        if(isEmpty()) {
+        if(this.isEmpty()) {
             return -1;
         } else {
-            int ultimo = this.stack[num_elements - 1];
-            this.stack[num_elements - 1] = 0;
+            int ultimo = this.stack[num_elements-1];
+            this.stack[num_elements-1] = 0;
             this.num_elements--;
 
             return ultimo;
@@ -42,13 +40,15 @@ public class OperandStack {
 
     public String toString() {
         String cadena = "Pila: ";
-        if (isEmpty()) {
-            return cadena += "Nada que ver aquí...";
+        if (this.isEmpty()) {
+            return cadena += "---";
+        } else {
+            for(int i = 0; i < this.num_elements; i++) {
+                cadena += (" " + this.stack[i] + " ");
+            }
+            return cadena;
         }
-        for(int i = 0; i < this.num_elements; i++) {
-            cadena += (" " + this.stack[i] + " ");
-        }
-        return cadena;
+
     }
 
     

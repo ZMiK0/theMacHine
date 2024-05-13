@@ -61,10 +61,8 @@ public class ByteCodeProgram {
     }
 
     public void reset() {
+        this.num_elements = 0;
         this.program = new ByteCode[this.size];
     }
 
-    public ByteCode getProgram(int _i) {
-        return this.program[_i];
-    }
 }

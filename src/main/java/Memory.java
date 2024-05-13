@@ -14,17 +14,23 @@ public class Memory {
     public String toString() {
         String cadena = "Memoria: ";
         if (isEmpty) {
-            return cadena += "Nada que ver aquí...";
+            return cadena += "---";
+        } else {
+            for(int i = 0; i < this.size; i++) {
+                if (this.memory[i] != null) {
+                    cadena += (" [" + i + "]: " + this.memory[i] + " ");
+                }
+            }
+            return cadena;
         }
-        for(int i = 0; i < this.size; i++) {
-            cadena += (" " + i + ": " + this.memory[i] + " ");
-        }
-        return cadena;
+
     }
 
     public boolean write(int _pos, int _value) {
         if(_pos >= 0) {
+            this.resize(_pos);
             this.memory[_pos] = _value;
+            this.isEmpty = false;
             return true;
         } else {
             return false;

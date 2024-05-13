@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Engine {
@@ -20,7 +21,7 @@ public class Engine {
             String instruccion = sc.nextLine();
             Command comando = CommandParser.parse(instruccion);
             try {
-                System.out.println("Comienza la ejecución de " + comando.getCommand());
+                System.out.println("Comienza la ejecución de [" + instruccion.toUpperCase() + "]");
                 if(comando.execute(this)) {
 
                 } else {
@@ -68,6 +69,7 @@ public class Engine {
     public boolean commandReset() {
         if(this.cpu.reset()) {
             System.out.println("Borrando el estado de la máquina");
+            this.program.reset();
         } else {
             System.out.println("Algo ha fallado");
         }
@@ -79,11 +81,18 @@ public class Engine {
             Scanner sc = new Scanner(System.in);
             System.out.print("[belz@maquinavirtual] -> Nuevo Bytecode: ");
             String instruccion = sc.nextLine();
-            Command xcomando = CommandParser.parse(instruccion);
-            this.program.replaceByteCode(xcomando.getInstruction(), _comando.getReplace());
-            this.program.toString();
+            String[] particion = instruccion.split(" ");
+            if(particion.length == 1) {
+                ByteCode x = ByteCodeParser.parse(particion[0]);
+                this.program.replaceByteCode(x, _comando.getReplace());
+            } else {
+                ByteCode x = ByteCodeParser.parse(particion[0], particion[1]);
+                this.program.replaceByteCode(x, _comando.getReplace());
+            }
+            System.out.println(this.program.toString());
             return true;
         } else {
+            System.out.println(this.program.toString());
             return false;
         }
     }
