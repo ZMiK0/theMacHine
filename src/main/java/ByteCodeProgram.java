@@ -23,9 +23,11 @@ public class ByteCodeProgram {
 
     public void resize(int _numElements) {
         if(_numElements >= this.size) {
-            ByteCode[] program2 = new ByteCode[this.size * 2];
-            System.arraycopy(this.program, 0, program2, 0, this.size);
-            this.program = program2;
+            ByteCode[] new_program = new ByteCode[this.size * 2];
+            for (int i = 0; i < this.size; i++) {
+                new_program[i] = this.program[i];
+            }
+            this.program = new_program;
         }
     }
 

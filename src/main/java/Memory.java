@@ -11,12 +11,23 @@ public class Memory {
         this.isEmpty = true;
     }
 
+    private void resize(int _pos) {
+        if(_pos >= this.size) {
+            this.isEmpty = false;
+            Integer[] new_memory = new Integer[_pos * 2];
+            for (int i = 0; i < this.size; i++) {
+                new_memory[i] = this.memory[i];
+            }
+            this.memory = new_memory;
+        }
+    }
+
     public String toString() {
         String cadena = "Memoria: ";
         if (isEmpty) {
             return cadena += "---";
         } else {
-            for(int i = 0; i < this.size; i++) {
+            for(int i = 0; i < this.memory.length; i++) {
                 if (this.memory[i] != null) {
                     cadena += (" [" + i + "]: " + this.memory[i] + " ");
                 }
@@ -28,9 +39,9 @@ public class Memory {
 
     public boolean write(int _pos, int _value) {
         if(_pos >= 0) {
+            this.isEmpty = false;
             this.resize(_pos);
             this.memory[_pos] = _value;
-            this.isEmpty = false;
             return true;
         } else {
             return false;
@@ -42,15 +53,6 @@ public class Memory {
             return this.memory[_pos];
         } else {
             return -1;
-        }
-    }
-
-    public void resize(int _pos) {
-        if(_pos >= this.size) {
-            this.isEmpty = false;
-            Integer[] new_memory = new Integer[_pos * 2];
-            System.arraycopy(this.memory, 0, new_memory, 0, this.size);
-            this.memory = new_memory;
         }
     }
 }
