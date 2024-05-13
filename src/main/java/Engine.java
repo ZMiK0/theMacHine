@@ -5,11 +5,15 @@ public class Engine {
     private boolean end;
     private CPU cpu;
 
+    public Engine() {
+        program = new ByteCodeProgram();
+        end = false;
+        cpu = new CPU();
+    }
+
 
     public void start() {
         Scanner sc = new Scanner(System.in);
-        program = new ByteCodeProgram();
-        cpu = new CPU();
 
         while(!this.end) {
             System.out.print("[belz@maquinavirtual] -> ");
@@ -48,9 +52,9 @@ public class Engine {
     }
 
     public boolean commandNewinst(Command _comando) {
-        if (_comando != null) {
+        if (_comando.getInstruction() != null) {
             this.program.addByteCode(_comando.getInstruction());
-            this.program.toString();
+            System.out.println(this.program.toString());
             return true;
         } else {
             return false;
@@ -58,7 +62,12 @@ public class Engine {
     }
 
     public boolean commandReset() {
-        System.out.println("Borrando el estado de la máquina");
+
+        if(this.cpu.reset()) {
+            System.out.println("Borrando el estado de la máquina");
+        } else {
+            System.out.println("Algo ha fallado");
+        }
         return true;
     }
 

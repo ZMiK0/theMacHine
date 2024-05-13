@@ -48,7 +48,7 @@ public class Command {
                     return false;
             }
         } catch (Exception e) {
-            System.out.println();
+            System.out.println("ERROR " + e.getMessage());
             return false;
         }
 

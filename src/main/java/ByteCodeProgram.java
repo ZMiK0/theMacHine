@@ -4,15 +4,15 @@ public class ByteCodeProgram {
     private int size;
 
     public ByteCodeProgram() {
-        this.program = new ByteCode[this.size];
         this.size = 10;
+        this.program = new ByteCode[this.size];
         this.num_elements = 0;
     }
 
     public String toString() {
-        String chain = "";
+        String chain ="Programa almacenado:\n";
         for(int i = 0; i < this.num_elements; i++) {
-            chain += i + ": " + this.program[i].toString() + "\n";
+            chain += i + ": " + this.program[i].getName() + " " + this.program[i].getParam() + "\n";
         }
         return chain;
     }
@@ -29,13 +29,16 @@ public class ByteCodeProgram {
         }
     }
 
-    public boolean addByteCode(ByteCode _byteCode) {
+    public void addByteCode(ByteCode _byteCode) {
         if(this.num_elements >= this.size) {
             this.resize(this.size);
+            this.program[this.num_elements] = _byteCode;
+            this.num_elements++;
+        } else {
+            this.program[this.num_elements] = _byteCode; //lanza excepcion
+            num_elements++;
         }
-        this.program[this.num_elements] = _byteCode;
-        num_elements++;
-        return true;
+
     }
 
     public boolean replaceByteCode(ByteCode _byteCode, int _i) {

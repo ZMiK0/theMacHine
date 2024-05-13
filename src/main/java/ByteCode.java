@@ -13,14 +13,14 @@ public class ByteCode {
     }
 
     public String toString() {
-        return name.toString() + " " + param;
+        return this.name.toString() + " " + param;
     }
 
     public ENUM_BYTECODE getName() {
-        return name;
+        return this.name;
     }
     public int getParam() {
-        return param;
+        return this.param;
     }
 
 }

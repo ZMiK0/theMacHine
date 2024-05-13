@@ -3,7 +3,11 @@ public class CPU {
     private OperandStack pila;
     private boolean isHalt;
 
-
+    public CPU() {
+        this.memoria = new Memory();
+        this.pila = new OperandStack();
+        this.isHalt = false;
+    }
 
     public boolean execute(ByteCode _instr) {
         switch(_instr.getName()) {
@@ -112,6 +116,12 @@ public class CPU {
 
     public boolean haltPrograma() {
         this.isHalt = true;
+        return true;
+    }
+
+    public boolean reset() {
+        this.pila = new OperandStack();
+        this.memoria = new Memory();
         return true;
     }
 
