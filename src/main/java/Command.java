@@ -21,6 +21,14 @@ public class Command {
         this.replace = _replace;
     }
 
+    public ByteCode getInstruction() {
+        return instruction;
+    }
+
+    public Integer getReplace() {
+        return replace;
+    }
+
     public boolean execute(Engine _engine) {
         try {
             switch (this.command) {
@@ -31,12 +39,11 @@ public class Command {
                 case RUN:
                     return _engine.commandRun();
                 case NEWINST:
-                    return _engine.commandNewinst();
+                    return _engine.commandNewinst(this);
                 case RESET:
                     return _engine.commandReset();
                 case REPLACE:
-                    System.out.println();
-                    return true;
+                    return _engine.commandReplace(this);
                 default:
                     return false;
             }

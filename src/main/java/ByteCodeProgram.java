@@ -9,6 +9,18 @@ public class ByteCodeProgram {
         this.num_elements = 0;
     }
 
+    public String toString() {
+        String chain = "";
+        for(int i = 0; i < this.num_elements; i++) {
+            chain += i + ": " + this.program[i].toString() + "\n";
+        }
+        return chain;
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
     public void resize(int _numElements) {
         if(_numElements >= this.size) {
             ByteCode[] program2 = new ByteCode[this.size * 2];
@@ -17,10 +29,16 @@ public class ByteCodeProgram {
         }
     }
 
-    public boolean addByteCode(ByteCode _byteCode, int _i) {
+    public boolean addByteCode(ByteCode _byteCode) {
         if(this.num_elements >= this.size) {
             this.resize(this.size);
         }
+        this.program[this.num_elements] = _byteCode;
+        num_elements++;
+        return true;
+    }
+
+    public boolean replaceByteCode(ByteCode _byteCode, int _i) {
         this.program[_i] = _byteCode;
         return true;
     }
@@ -43,5 +61,4 @@ public class ByteCodeProgram {
     public ByteCode getProgram(int _i) {
         return this.program[_i];
     }
-    //metodo para colocar un bytecode en una instruccion. Bytecode Int
 }

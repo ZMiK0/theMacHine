@@ -5,12 +5,15 @@ public class Engine {
     private boolean end;
     private CPU cpu;
 
+
     public void start() {
         Scanner sc = new Scanner(System.in);
+        program = new ByteCodeProgram();
+        cpu = new CPU();
 
         while(!this.end) {
             System.out.print("[belz@maquinavirtual] -> ");
-            String instruccion = sc.next();
+            String instruccion = sc.nextLine();
             Command comando = CommandParser.parse(instruccion);
             if(comando.execute(this)) {
                 System.out.println();
@@ -40,18 +43,37 @@ public class Engine {
         System.out.println(
                 "Comienza la ejecución de RUN"
         );
-
+        program.runProgram(this.cpu);
         return true;
     }
 
-    public boolean commandNewinst() {
-
-        return true;
+    public boolean commandNewinst(Command _comando) {
+        if (_comando != null) {
+            this.program.addByteCode(_comando.getInstruction());
+            this.program.toString();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean commandReset() {
         System.out.println("Borrando el estado de la máquina");
         return true;
+    }
+
+    public boolean commandReplace(Command _comando) {
+        if (_comando != null) {
+            Scanner sc = new Scanner(System.in);
+            System.out.print("[belz@maquinavirtual] -> Nuevo Bytecode: ");
+            String instruccion = sc.nextLine();
+            Command xcomando = CommandParser.parse(instruccion);
+            this.program.replaceByteCode(xcomando.getInstruction(), _comando.getReplace());
+            this.program.toString();
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
