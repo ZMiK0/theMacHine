@@ -12,7 +12,7 @@ public class Memory {
     }
 
     private void resize(int _pos) {
-        if(_pos >= this.size) {
+        if (_pos >= this.size) {
             this.isEmpty = false;
             Integer[] new_memory = new Integer[_pos * 2];
             for (int i = 0; i < this.size; i++) {
@@ -27,7 +27,7 @@ public class Memory {
         if (isEmpty) {
             return cadena += "---";
         } else {
-            for(int i = 0; i < this.memory.length; i++) {
+            for (int i = 0; i < this.memory.length; i++) {
                 if (this.memory[i] != null) {
                     cadena += (" [" + i + "]: " + this.memory[i] + " ");
                 }
@@ -38,7 +38,7 @@ public class Memory {
     }
 
     public boolean write(int _pos, int _value) {
-        if(_pos >= 0) {
+        if (_pos >= 0) {
             this.isEmpty = false;
             this.resize(_pos);
             this.memory[_pos] = _value;
@@ -49,7 +49,7 @@ public class Memory {
     }
 
     public int read(int _pos) {
-        if(this.memory[_pos] != null) {
+        if (this.memory[_pos] != null) {
             return this.memory[_pos];
         } else {
             return -1;

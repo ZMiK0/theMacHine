@@ -10,7 +10,7 @@ public class CPU {
     }
 
     public boolean execute(ByteCode _instr) {
-        switch(_instr.getName()) {
+        switch (_instr.getName()) {
             case ADD:
                 return this.sumaPila();
             case PUSH:
@@ -95,13 +95,13 @@ public class CPU {
 
     public boolean storeMemoria(int _pos) {
         this.runCPU();
-        this.memoria.write(_pos,this.pila.pop());
+        this.memoria.write(_pos, this.pila.pop());
         return true;
     }
 
     public boolean loadMemoria(int _pos) {
         this.runCPU();
-        this.memoria.read(_pos);
+        this.pila.push(this.memoria.read(_pos));
         return true;
     }
 

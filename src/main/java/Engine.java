@@ -23,15 +23,15 @@ public class Engine {
     public void start() {
         Scanner sc = new Scanner(System.in);
 
-        while(!this.end) {
+        while (!this.end) {
             System.out.print("[belz@maquinavirtual] -> ");
             String instruccion = sc.nextLine();
             Command comando = CommandParser.parse(instruccion);
             System.out.println("Comienza la ejecución de [" + instruccion.toUpperCase() + "]");
-            if(comando.execute(this)) {
+            if (comando.execute(this)) {
 
             } else {
-                System.out.println("No se ha podido ejecutar");
+                System.out.println("No se ha podido ejecutar, comando incorrecto");
             }
         }
     }
@@ -50,7 +50,8 @@ public class Engine {
                         "NEWINST BYTECODE: Introduce una nueva instrucción al programa\n" +
                         "RESET: Vacia el programa actual\n" +
                         "REPLACE N: Reemplaza la instruccion N por la solicitada al usuario"
-        ); return true;
+        );
+        return true;
     }
 
     public boolean commandRun() {
@@ -70,7 +71,7 @@ public class Engine {
     }
 
     public boolean commandReset() {
-        if(this.cpu.reset()) {
+        if (this.cpu.reset()) {
             this.clearScreen();
             System.out.println("Borrando el estado de la máquina");
             this.program.reset();
@@ -86,7 +87,7 @@ public class Engine {
             System.out.print("[belz@maquinavirtual] -> Nuevo Bytecode: ");
             String instruccion = sc.nextLine();
             String[] particion = instruccion.split(" ");
-            if(particion.length == 1) {
+            if (particion.length == 1) {
                 ByteCode x = ByteCodeParser.parse(particion[0]);
                 this.program.replaceByteCode(x, _comando.getReplace());
             } else {

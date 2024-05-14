@@ -10,8 +10,8 @@ public class ByteCodeProgram {
     }
 
     public String toString() {
-        String chain ="Programa almacenado:\n";
-        for(int i = 0; i < this.num_elements; i++) {
+        String chain = "Programa almacenado:\n";
+        for (int i = 0; i < this.num_elements; i++) {
             chain += i + ": " + this.program[i].getName() + " " + this.program[i].getParam() + "\n";
         }
         return chain;
@@ -19,7 +19,7 @@ public class ByteCodeProgram {
 
 
     private void resize(int _numElements) {
-        if(_numElements >= this.program.length) {
+        if (_numElements >= this.program.length) {
             ByteCode[] new_program = new ByteCode[_numElements * 2];
             for (int i = 0; i < this.size; i++) {
                 new_program[i] = this.program[i];
@@ -41,15 +41,17 @@ public class ByteCodeProgram {
 
     public String runProgram(CPU _cpu) {
         String mensaje = "";
-        for(int i = 0; i < this.num_elements; i++) {
-            if(!_cpu.isHalt() && _cpu.execute(this.program[i])) {
+        for (int i = 0; i < this.num_elements; i++) {
+            if (!_cpu.isHalt() && _cpu.execute(this.program[i])) {
                 mensaje += "\n-----------------\nEl estado de la máquina tras ejecutar " + this.program[i].getName() + " " + this.program[i].getParam() + " es:\n" + _cpu.toString() + "\n";
-            } else if (_cpu.isHalt()){
+            } else if (_cpu.isHalt()) {
                 mensaje += "HALT\n";
+
             }
+            _cpu.erase();
+            _cpu.runCPU();
+            return mensaje;
         }
-        _cpu.erase();
-        _cpu.runCPU();
         return mensaje;
     }
 
@@ -57,5 +59,4 @@ public class ByteCodeProgram {
         this.num_elements = 0;
         this.program = new ByteCode[this.size];
     }
-
 }
