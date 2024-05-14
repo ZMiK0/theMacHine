@@ -6,6 +6,9 @@ public class Engine {
     private boolean end;
     private CPU cpu;
 
+    private String colorTerminal = "\u001b[36m";
+    private String colorBlanco = "\033[0m";
+
     /**
      * Limpia la consola
      */
@@ -26,7 +29,8 @@ public class Engine {
         Scanner sc = new Scanner(System.in);
 
         while (!this.end) {
-            System.out.print("[belz@maquinavirtual] -> ");
+
+            System.out.print(colorTerminal + "[belz@maquinavirtual] -> " + colorBlanco);
             String instruccion = sc.nextLine();
             Command comando = CommandParser.parse(instruccion);
             System.out.println("Comienza la ejecución de [" + instruccion.toUpperCase() + "]");
