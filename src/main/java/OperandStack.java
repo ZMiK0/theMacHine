@@ -42,10 +42,8 @@ public class OperandStack {
         if(this.isEmpty()) {
             return -1;
         } else {
-            int ultimo = this.stack[num_elements-1];
-            this.stack[num_elements-1] = 0;
+            int ultimo = this.stack[this.num_elements - 1];
             this.num_elements--;
-
             return ultimo;
         }
 

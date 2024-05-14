@@ -40,7 +40,7 @@ public class ByteCodeProgram {
      */
     public void addByteCode(ByteCode _byteCode) {
         if (this.numElements >= this.program.length) {
-            this.resize(this.numElements);
+            resize(this.numElements);
             this.program[this.numElements] = _byteCode;
             this.numElements++;
         } else {
@@ -56,6 +56,7 @@ public class ByteCodeProgram {
      * @return
      */
     public boolean replaceByteCode(ByteCode _byteCode, int _i) {
+
         this.program[_i] = _byteCode;
         return true;
     }

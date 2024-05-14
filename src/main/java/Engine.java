@@ -108,7 +108,7 @@ public class Engine {
      */
     public boolean commandReset() {
         if (this.cpu.reset()) {
-            this.clearScreen();
+            clearScreen();
             System.out.println(colorBorrar + "Borrando el estado de la máquina" + colorBlanco);
             this.program.reset();
         } else {

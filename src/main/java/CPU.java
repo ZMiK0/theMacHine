@@ -17,23 +17,23 @@ public class CPU {
     public boolean execute(ByteCode _instr) {
         switch (_instr.getName()) {
             case ADD:
-                return this.sumaPila();
+                return sumaPila();
             case PUSH:
-                return this.push(_instr.getParam());
+                return this.pila.push(_instr.getParam());
             case LOAD:
-                return this.loadMemoria(_instr.getParam());
+                return loadMemoria(_instr.getParam());
             case STORE:
-                return this.storeMemoria(_instr.getParam());
+                return storeMemoria(_instr.getParam());
             case SUB:
-                return this.restarPila();
+                return restarPila();
             case MUL:
-                return this.multiplicarPila();
+                return multiplicarPila();
             case DIV:
-                return this.dividirPila();
+                return dividirPila();
             case OUT:
-                return this.outPila();
+                return outPila();
             case HALT:
-                return this.haltPrograma();
+                return haltPrograma();
             default:
                 return false;
         }
@@ -44,7 +44,7 @@ public class CPU {
      * @return
      */
     public boolean isHalt() {
-        return isHalt;
+        return this.isHalt;
     }
 
     /**
@@ -87,12 +87,17 @@ public class CPU {
      */
     public boolean sumaPila() {
         this.runCPU();
-        int e1 = this.pila.pop();
-        int e2 = this.pila.pop();
-        if(e2!=-1) {
-            int result = e1 + e2;
-            this.pila.push(result);
-            return true;
+        if(!this.pila.isEmpty()) {
+            int e1 = this.pila.pop();
+            if(!this.pila.isEmpty()) {
+                int e2 = this.pila.pop();
+                int result = e1 + e2;
+                this.pila.push(result);
+                return true;
+            } else {
+                this.pila.push(e1);
+                return false;
+            }
         } else {
             return false;
         }
@@ -104,12 +109,17 @@ public class CPU {
      */
     public boolean restarPila() {
         this.runCPU();
-        int e1 = this.pila.pop();
-        int e2 = this.pila.pop();
-        if(e2!=-1) {
-            int result = e1 - e2;
-            this.pila.push(result);
-            return true;
+        if(!this.pila.isEmpty()) {
+            int e1 = this.pila.pop();
+            if(!this.pila.isEmpty()) {
+                int e2 = this.pila.pop();
+                int result = e1 - e2;
+                this.pila.push(result);
+                return true;
+            } else {
+                this.pila.push(e1);
+                return false;
+            }
         } else {
             return false;
         }
@@ -121,12 +131,17 @@ public class CPU {
      */
     public boolean multiplicarPila() {
         this.runCPU();
-        int e1 = this.pila.pop();
-        int e2 = this.pila.pop();
-        if(e2!=-1) {
-            int result = e1 * e2;
-            this.pila.push(result);
-            return true;
+        if(!this.pila.isEmpty()) {
+            int e1 = this.pila.pop();
+            if(!this.pila.isEmpty()) {
+                int e2 = this.pila.pop();
+                int result = e1 * e2;
+                this.pila.push(result);
+                return true;
+            } else {
+                this.pila.push(e1);
+                return false;
+            }
         } else {
             return false;
         }
@@ -138,12 +153,17 @@ public class CPU {
      */
     public boolean dividirPila() {
         this.runCPU();
-        int e1 = this.pila.pop();
-        int e2 = this.pila.pop();
-        if(e2!=-1) {
-            int result = e1 / e2;
-            this.pila.push(result);
-            return true;
+        if(!this.pila.isEmpty()) {
+            int e1 = this.pila.pop();
+            if(!this.pila.isEmpty()) {
+                int e2 = this.pila.pop();
+                int result = e1 / e2;
+                this.pila.push(result);
+                return true;
+            } else {
+                this.pila.push(e1);
+                return false;
+            }
         } else {
             return false;
         }

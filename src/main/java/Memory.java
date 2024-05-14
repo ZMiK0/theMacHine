@@ -20,9 +20,7 @@ public class Memory {
         if (_pos >= this.size) {
             this.isEmpty = false;
             Integer[] new_memory = new Integer[_pos * 2];
-            for (int i = 0; i < this.size; i++) {
-                new_memory[i] = this.memory[i];
-            }
+            if (this.size >= 0) System.arraycopy(this.memory, 0, new_memory, 0, this.size);
             this.memory = new_memory;
         }
     }
@@ -70,7 +68,7 @@ public class Memory {
      * @return
      */
     public int read(int _pos) {
-        if (this.memory[_pos] != null) {
+        if (this.memory[_pos] != null && _pos>=0) {
             return this.memory[_pos];
         } else {
             return -1;
