@@ -41,8 +41,8 @@ cd theMacHine
 ```
 
 # Imágenes
-![[media/terminal.png]]
+![Foto](./media/terminal.png)
 > Terminal del programa
 
-![[media/code.png]]
+![Foto](./media/code.png)
 > Código del programa
