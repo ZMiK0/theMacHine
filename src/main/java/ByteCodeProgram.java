@@ -72,7 +72,7 @@ public class ByteCodeProgram {
             if (!_cpu.isHalt() && _cpu.execute(this.program[i])) {
                 mensaje += "\n-----------------\nEl estado de la máquina tras ejecutar " + this.program[i].getName() + " " + this.program[i].getParam() + " es:\n" + _cpu.toString() + "\n";
             } else if (!_cpu.isHalt()) {
-                mensaje += "No se ha podido ejecutar, ejecución incorrecta";
+                mensaje += (Engine.colorError + "No se ha podido ejecutar, ejecución incorrecta" + Engine.colorBlanco);
             }
         }
         _cpu.erase();

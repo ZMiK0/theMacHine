@@ -7,7 +7,9 @@ public class Engine {
     private CPU cpu;
 
     private String colorTerminal = "\u001b[36m";
-    private String colorBlanco = "\033[0m";
+    public static String colorError = "\u001b[35m";
+    public static String colorComando = "\u001b[37m";
+    public static String colorBlanco = "\033[0m";
 
     /**
      * Limpia la consola
@@ -33,15 +35,15 @@ public class Engine {
             System.out.print(colorTerminal + "[belz@maquinavirtual] -> " + colorBlanco);
             String instruccion = sc.nextLine();
             Command comando = CommandParser.parse(instruccion);
-            System.out.println("Comienza la ejecución de [" + instruccion.toUpperCase() + "]");
+            System.out.println("Comienza la ejecución de [" + colorComando + instruccion.toUpperCase() + colorBlanco + "]");
             if (comando != null) {
                 if (comando.execute(this)) {
 
                 } else {
-                    System.out.println("No se ha podido ejecutar, ejecución incorrecta");
+                    System.out.println(colorError + "No se ha podido ejecutar, ejecución incorrecta." + colorBlanco);
                 }
             } else {
-                System.out.println("No se ha podido ejecutar, comando incorrecto");
+                System.out.println(colorError + "No se ha podido ejecutar, comando incorrecto." + colorBlanco);
             }
 
         }
@@ -62,7 +64,14 @@ public class Engine {
      * @return
      */
     public boolean commandHelp() {
-        System.out.println("HELP: Muestra esta ayuda\n" + "QUIT: Cierra la aplicacion\n" + "RUN: Ejecuta el programa\n" + "NEWINST BYTECODE: Introduce una nueva instrucción al programa\n" + "RESET: Vacia el programa actual\n" + "REPLACE N: Reemplaza la instruccion N por la solicitada al usuario");
+        System.out.println(
+               colorComando + "HELP" + colorBlanco + ": Muestra esta ayuda\n" +
+               colorComando + "QUIT" + colorBlanco + ": Cierra la aplicacion\n" +
+               colorComando + "RUN" + colorBlanco + ": Ejecuta el programa\n" +
+               colorComando + "NEWINST BYTECODE" + colorBlanco +": Introduce una nueva instrucción al programa\n" +
+               colorComando + "RESET" + colorBlanco +": Vacia el programa actual\n" +
+               colorComando + "REPLACE N" + colorBlanco +": Reemplaza la instruccion N por la solicitada al usuario"
+        );
         return true;
     }
 
