@@ -9,6 +9,10 @@ public class ByteCodeProgram {
         this.numElements = 0;
     }
 
+    /**
+     * toString
+     * @return
+     */
     public String toString() {
         String chain = "Programa almacenado:\n";
         for (int i = 0; i < this.numElements; i++) {
@@ -17,7 +21,11 @@ public class ByteCodeProgram {
         return chain;
     }
 
-
+    /**
+     * Cambia el tamaño del array de Bytecodes
+     * Complejidad 0(n)
+     * @param _numElements
+     */
     private void resize(int _numElements) {
         ByteCode[] new_program = new ByteCode[_numElements * 2];
         for (int i = 0; i < this.program.length; i++) {
@@ -26,6 +34,10 @@ public class ByteCodeProgram {
         this.program = new_program;
     }
 
+    /**
+     * Añade un bytecode al array
+     * @param _byteCode
+     */
     public void addByteCode(ByteCode _byteCode) {
         if (this.numElements >= this.program.length) {
             this.resize(this.numElements);
@@ -37,11 +49,23 @@ public class ByteCodeProgram {
         }
     }
 
+    /**
+     * Reemplaza un bytecode
+     * @param _byteCode
+     * @param _i
+     * @return
+     */
     public boolean replaceByteCode(ByteCode _byteCode, int _i) {
         this.program[_i] = _byteCode;
         return true;
     }
 
+    /**
+     * Ejecuta el "programa"
+     * Complejidad 0(n)
+     * @param _cpu
+     * @return
+     */
     public String runProgram(CPU _cpu) {
         String mensaje = "";
         for (int i = 0; i < this.numElements; i++) {
@@ -56,6 +80,9 @@ public class ByteCodeProgram {
         return mensaje;
     }
 
+    /**
+     * Resetea el array
+     */
     public void reset() {
         this.numElements = 0;
         this.program = new ByteCode[this.size];

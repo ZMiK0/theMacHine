@@ -11,10 +11,19 @@ public class OperandStack {
         this.stack = new int[MAX_NUM];
     }
 
+    /**
+     * Comprueba que la pila no esté vacía
+     * @return
+     */
     public boolean isEmpty() {
         return this.num_elements == 0;
     }
 
+    /**
+     * Añade un elemento a la cima de la pila
+     * @param _elemento
+     * @return
+     */
     public boolean push(int _elemento) {
         if(this.num_elements < MAX_NUM) {
             this.stack[this.num_elements] = _elemento;
@@ -25,6 +34,10 @@ public class OperandStack {
         }
     }
 
+    /**
+     * Devuelve el primer elemento de la pila y lo elimina
+     * @return
+     */
     public int pop() {
         if(this.isEmpty()) {
             return -1;
@@ -38,6 +51,10 @@ public class OperandStack {
 
     }
 
+    /**
+     * toString
+     * @return
+     */
     public String toString() {
         String cadena = "Pila: ";
         if (this.isEmpty()) {

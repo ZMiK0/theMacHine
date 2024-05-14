@@ -9,6 +9,11 @@ public class CPU {
         this.isHalt = false;
     }
 
+    /**
+     * Se encarga de dirigir los bytecodes
+     * @param _instr
+     * @return
+     */
     public boolean execute(ByteCode _instr) {
         switch (_instr.getName()) {
             case ADD:
@@ -34,29 +39,52 @@ public class CPU {
         }
     }
 
+    /**
+     * Pregunta si el "programa" debe detenerse
+     * @return
+     */
     public boolean isHalt() {
         return isHalt;
     }
 
+    /**
+     * toString
+     * @return
+     */
     public String toString() {
         return "\nEstado de la CPU:\n" + memoria.toString() + "\n" + pila.toString() + "\n-----------------";
     }
 
+    /**
+     * Elimina alguna ejecución del programa
+     */
     public void runCPU() {
         this.isHalt = false;
     }
 
+    /**
+     * Limpia la memoria (diferenciar de reset)
+     */
     public void erase() {
         this.memoria = new Memory();
         this.pila = new OperandStack();
     }
 
+    /**
+     * Añade un elemento a la pila
+     * @param _n
+     * @return
+     */
     public boolean push(int _n) {
         this.runCPU();
         this.pila.push(_n);
         return true;
     }
 
+    /**
+     * Suma los 2 ultimos de la pila
+     * @return
+     */
     public boolean sumaPila() {
         this.runCPU();
         int e1 = this.pila.pop();
@@ -70,6 +98,10 @@ public class CPU {
         }
     }
 
+    /**
+     * Resta los 2 ultimos de la pila
+     * @return
+     */
     public boolean restarPila() {
         this.runCPU();
         int e1 = this.pila.pop();
@@ -83,6 +115,10 @@ public class CPU {
         }
     }
 
+    /**
+     * Multiplica los 2 ultimos de la pila
+     * @return
+     */
     public boolean multiplicarPila() {
         this.runCPU();
         int e1 = this.pila.pop();
@@ -96,6 +132,10 @@ public class CPU {
         }
     }
 
+    /**
+     * Divide los 2 ultimos de la pila
+     * @return
+     */
     public boolean dividirPila() {
         this.runCPU();
         int e1 = this.pila.pop();
@@ -109,18 +149,32 @@ public class CPU {
         }
     }
 
+    /**
+     * Guarda un valor en la memoria
+     * @param _pos
+     * @return
+     */
     public boolean storeMemoria(int _pos) {
         this.runCPU();
         this.memoria.write(_pos, this.pila.pop());
         return true;
     }
 
+    /**
+     * Carga un valor de la memoria
+     * @param _pos
+     * @return
+     */
     public boolean loadMemoria(int _pos) {
         this.runCPU();
         this.pila.push(this.memoria.read(_pos));
         return true;
     }
 
+    /**
+     * Devuelve el primer elemento de la pila
+     * @return
+     */
     public boolean outPila() {
         this.runCPU();
         int temp = this.pila.pop();
@@ -129,11 +183,19 @@ public class CPU {
         return true;
     }
 
+    /**
+     * Detiene el "programa"
+     * @return
+     */
     public boolean haltPrograma() {
         this.isHalt = true;
         return true;
     }
 
+    /**
+     * Resetea la pila y crea unas nuevas
+     * @return
+     */
     public boolean reset() {
         this.pila = new OperandStack();
         this.memoria = new Memory();

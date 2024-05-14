@@ -1,4 +1,9 @@
 public class CommandParser {
+    /**
+     * Parsea un string a un comando
+     * @param _line
+     * @return
+     */
     public static Command parse(String _line) {
         String[] particion = _line.toLowerCase().split(" ");
         switch (particion[0]) {

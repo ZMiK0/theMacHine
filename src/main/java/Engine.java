@@ -19,7 +19,9 @@ public class Engine {
         cpu = new CPU();
     }
 
-
+    /**
+     * Comienza la ejecución
+     */
     public void start() {
         Scanner sc = new Scanner(System.in);
 
@@ -41,23 +43,40 @@ public class Engine {
         }
     }
 
+    /**
+     * Comando que finaliza el programa
+     * @return
+     */
     public boolean commandEnd() {
         System.out.println("APAGANDO EL SISTEMA");
         this.end = true;
         return true;
     }
 
+    /**
+     * Comando que muestra la pantalla de ayuda
+     * @return
+     */
     public boolean commandHelp() {
         System.out.println("HELP: Muestra esta ayuda\n" + "QUIT: Cierra la aplicacion\n" + "RUN: Ejecuta el programa\n" + "NEWINST BYTECODE: Introduce una nueva instrucción al programa\n" + "RESET: Vacia el programa actual\n" + "REPLACE N: Reemplaza la instruccion N por la solicitada al usuario");
         return true;
     }
 
+    /**
+     * Comando que ejecuta el programa
+     * @return
+     */
     public boolean commandRun() {
         System.out.println(this.program.runProgram(this.cpu));
         System.out.println(this.program.toString());
         return true;
     }
 
+    /**
+     * Comando que añade un ByteCode al programa
+     * @param _comando
+     * @return
+     */
     public boolean commandNewinst(Command _comando) {
         if (_comando.getInstruction() != null) {
             this.program.addByteCode(_comando.getInstruction());
@@ -68,6 +87,10 @@ public class Engine {
         }
     }
 
+    /**
+     * Comando que resetea el programa
+     * @return
+     */
     public boolean commandReset() {
         if (this.cpu.reset()) {
             this.clearScreen();
@@ -79,6 +102,11 @@ public class Engine {
         return true;
     }
 
+    /**
+     * Comando que reemplaza un Bytecode del programa
+     * @param _comando
+     * @return
+     */
     public boolean commandReplace(Command _comando) {
         if (_comando != null) {
             Scanner sc = new Scanner(System.in);

@@ -11,6 +11,11 @@ public class Memory {
         this.isEmpty = true;
     }
 
+    /**
+     * Redimensiona la memoria
+     * Complejidad 0(n)
+     * @param _pos
+     */
     private void resize(int _pos) {
         if (_pos >= this.size) {
             this.isEmpty = false;
@@ -22,6 +27,11 @@ public class Memory {
         }
     }
 
+    /**
+     * toString
+     * Complejidad 0(n)
+     * @return
+     */
     public String toString() {
         String cadena = "Memoria: ";
         if (isEmpty) {
@@ -37,6 +47,12 @@ public class Memory {
 
     }
 
+    /**
+     * Escribe en la memoria
+     * @param _pos
+     * @param _value
+     * @return
+     */
     public boolean write(int _pos, int _value) {
         if (_pos >= 0) {
             this.isEmpty = false;
@@ -48,6 +64,11 @@ public class Memory {
         }
     }
 
+    /**
+     * Lee de la memoria
+     * @param _pos
+     * @return
+     */
     public int read(int _pos) {
         if (this.memory[_pos] != null) {
             return this.memory[_pos];

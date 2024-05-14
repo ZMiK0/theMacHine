@@ -21,14 +21,27 @@ public class Command {
         this.replace = _replace;
     }
 
+    /**
+     * Devuelve la instrucción
+     * @return
+     */
     public ByteCode getInstruction() {
         return instruction;
     }
 
+    /**
+     * Devuelve el argumento del replace
+     * @return
+     */
     public Integer getReplace() {
         return replace;
     }
 
+    /**
+     * Se encarga de dirigir el comando
+     * @param _engine
+     * @return
+     */
     public boolean execute(Engine _engine) {
         switch (this.command) {
             case HELP:

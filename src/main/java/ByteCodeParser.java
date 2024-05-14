@@ -1,5 +1,11 @@
 public class ByteCodeParser {
 
+    /**
+     * devuelve el bytecode de 2 parametros
+     * @param _s
+     * @param _n
+     * @return
+     */
     public static ByteCode parse(String _s, String _n) {
         switch (_s.toLowerCase()) {
             case "push":
@@ -11,6 +17,11 @@ public class ByteCodeParser {
         } return null;
     }
 
+    /**
+     * devuelve el bytecode de 1 parametro
+     * @param _s
+     * @return
+     */
     public static ByteCode parse(String _s) {
         switch (_s.toLowerCase()) {
             case "add":
