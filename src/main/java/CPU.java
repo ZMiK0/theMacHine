@@ -61,36 +61,52 @@ public class CPU {
         this.runCPU();
         int e1 = this.pila.pop();
         int e2 = this.pila.pop();
-        int result = e1 + e2;
-        this.pila.push(result);
-        return true;
+        if(e2!=-1) {
+            int result = e1 + e2;
+            this.pila.push(result);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean restarPila() {
         this.runCPU();
         int e1 = this.pila.pop();
         int e2 = this.pila.pop();
-        int result = e1 - e2;
-        this.pila.push(result);
-        return true;
+        if(e2!=-1) {
+            int result = e1 - e2;
+            this.pila.push(result);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean multiplicarPila() {
         this.runCPU();
         int e1 = this.pila.pop();
         int e2 = this.pila.pop();
-        int result = e1 * e2;
-        this.pila.push(result);
-        return true;
+        if(e2!=-1) {
+            int result = e1 * e2;
+            this.pila.push(result);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean dividirPila() {
         this.runCPU();
         int e1 = this.pila.pop();
         int e2 = this.pila.pop();
-        int result = e2 / e1;
-        this.pila.push(result);
-        return true;
+        if(e2!=-1) {
+            int result = e1 / e2;
+            this.pila.push(result);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public boolean storeMemoria(int _pos) {

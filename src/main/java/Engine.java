@@ -28,11 +28,16 @@ public class Engine {
             String instruccion = sc.nextLine();
             Command comando = CommandParser.parse(instruccion);
             System.out.println("Comienza la ejecución de [" + instruccion.toUpperCase() + "]");
-            if (comando.execute(this)) {
+            if (comando != null) {
+                if (comando.execute(this)) {
 
+                } else {
+                    System.out.println("No se ha podido ejecutar, ejecución incorrecta");
+                }
             } else {
                 System.out.println("No se ha podido ejecutar, comando incorrecto");
             }
+
         }
     }
 
@@ -43,14 +48,7 @@ public class Engine {
     }
 
     public boolean commandHelp() {
-        System.out.println(
-                "HELP: Muestra esta ayuda\n" +
-                        "QUIT: Cierra la aplicacion\n" +
-                        "RUN: Ejecuta el programa\n" +
-                        "NEWINST BYTECODE: Introduce una nueva instrucción al programa\n" +
-                        "RESET: Vacia el programa actual\n" +
-                        "REPLACE N: Reemplaza la instruccion N por la solicitada al usuario"
-        );
+        System.out.println("HELP: Muestra esta ayuda\n" + "QUIT: Cierra la aplicacion\n" + "RUN: Ejecuta el programa\n" + "NEWINST BYTECODE: Introduce una nueva instrucción al programa\n" + "RESET: Vacia el programa actual\n" + "REPLACE N: Reemplaza la instruccion N por la solicitada al usuario");
         return true;
     }
 
@@ -89,26 +87,25 @@ public class Engine {
             String[] particion = instruccion.split(" ");
             if (particion.length == 1) {
                 ByteCode x = ByteCodeParser.parse(particion[0]);
-                this.program.replaceByteCode(x, _comando.getReplace());
+                if (x != null) {
+                    this.program.replaceByteCode(x, _comando.getReplace());
+                } else {
+                    return false;
+                }
             } else {
                 ByteCode x = ByteCodeParser.parse(particion[0], particion[1]);
-                this.program.replaceByteCode(x, _comando.getReplace());
+                if (x != null) {
+                    this.program.replaceByteCode(x, _comando.getReplace());
+                } else {
+                    return false;
+                }
             }
             System.out.println(this.program.toString());
             return true;
+
         } else {
             System.out.println(this.program.toString());
             return false;
         }
     }
-
-
 }
-
-
-
-/*
-Comienza la ejecución de NEWINST PUSH 22
-Programa almacenado:
-0: PUSH 22
- */

@@ -20,7 +20,7 @@ public class CommandParser {
             case "replace":
                 return new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(particion[1]));
             default:
-                return new Command();
+                return null;
         }
     }
 }
