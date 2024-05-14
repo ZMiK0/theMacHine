@@ -17,13 +17,10 @@ public class ByteCodeProgram {
         return chain;
     }
 
-    public int getSize() {
-        return this.size;
-    }
 
-    public void resize(int _numElements) {
-        if(_numElements >= this.size) {
-            ByteCode[] new_program = new ByteCode[this.size * 2];
+    private void resize(int _numElements) {
+        if(_numElements >= this.program.length) {
+            ByteCode[] new_program = new ByteCode[_numElements * 2];
             for (int i = 0; i < this.size; i++) {
                 new_program[i] = this.program[i];
             }
@@ -32,15 +29,9 @@ public class ByteCodeProgram {
     }
 
     public void addByteCode(ByteCode _byteCode) {
-        if(this.num_elements >= this.size) {
-            this.resize(this.size);
-            this.program[this.num_elements] = _byteCode;
-            this.num_elements++;
-        } else {
-            this.program[this.num_elements] = _byteCode; //lanza excepcion
-            num_elements++;
-        }
-
+        this.resize(this.num_elements);
+        this.program[this.num_elements] = _byteCode;
+        this.num_elements++;
     }
 
     public boolean replaceByteCode(ByteCode _byteCode, int _i) {

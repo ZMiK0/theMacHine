@@ -6,6 +6,13 @@ public class Engine {
     private boolean end;
     private CPU cpu;
 
+    /**
+     * Limpia la consola
+     */
+    public void clearScreen() {
+        System.out.print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    }
+
     public Engine() {
         program = new ByteCodeProgram();
         end = false;
@@ -20,17 +27,12 @@ public class Engine {
             System.out.print("[belz@maquinavirtual] -> ");
             String instruccion = sc.nextLine();
             Command comando = CommandParser.parse(instruccion);
-            try {
-                System.out.println("Comienza la ejecución de [" + instruccion.toUpperCase() + "]");
-                if(comando.execute(this)) {
+            System.out.println("Comienza la ejecución de [" + instruccion.toUpperCase() + "]");
+            if(comando.execute(this)) {
 
-                } else {
-                    System.out.println("No se ha podido ejecutar");
-                }
-            } catch (Exception e) {
-                System.out.println("Error al ejecutar la instruccion");
+            } else {
+                System.out.println("No se ha podido ejecutar");
             }
-
         }
     }
 
@@ -39,6 +41,7 @@ public class Engine {
         this.end = true;
         return true;
     }
+
     public boolean commandHelp() {
         System.out.println(
                 "HELP: Muestra esta ayuda\n" +
@@ -68,6 +71,7 @@ public class Engine {
 
     public boolean commandReset() {
         if(this.cpu.reset()) {
+            this.clearScreen();
             System.out.println("Borrando el estado de la máquina");
             this.program.reset();
         } else {

@@ -52,7 +52,7 @@ public class Command {
                     return false;
             }
         } catch (Exception e) {
-            System.out.println("ERROR " + e.getMessage());
+            System.out.println("ERROR");
             return false;
         }
 
