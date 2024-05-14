@@ -10,6 +10,8 @@ public class Engine {
     public static String colorError = "\u001b[35m";
     public static String colorComando = "\u001b[37m";
     public static String colorBlanco = "\033[0m";
+    private String colorBorrar = "\u001b[91m";
+
 
     /**
      * Limpia la consola
@@ -54,7 +56,7 @@ public class Engine {
      * @return
      */
     public boolean commandEnd() {
-        System.out.println("APAGANDO EL SISTEMA");
+        System.out.println(colorBorrar + "---APAGANDO EL SISTEMA---");
         this.end = true;
         return true;
     }
@@ -107,7 +109,7 @@ public class Engine {
     public boolean commandReset() {
         if (this.cpu.reset()) {
             this.clearScreen();
-            System.out.println("Borrando el estado de la máquina");
+            System.out.println(colorBorrar + "Borrando el estado de la máquina" + colorBlanco);
             this.program.reset();
         } else {
             System.out.println("Algo ha fallado");
