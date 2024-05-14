@@ -1,13 +1,14 @@
 # Descripción
 
-Este programa es una simulación de una máquina virtual donde ejecutas comandos y suceden cosas
+Este programa es una simulación de una máquina virtual donde ejecutas comandos que se almacenan para ejecutarse en orden posteriormente, siendo capaz de modificar los comandos y añadir nuevos cuando al usuario le plazca.
 
+Proyecto del **3º Trimestre** de la asignatura de **Programación**
+Profesor: **Jonathan Carrero**
 ## USO
 
 **help**: Muestra esta ayuda 
 
 **quit**: Cierra el programa
-
 
 **run**: Ejecuta el programa
 
@@ -30,11 +31,18 @@ Este programa es una simulación de una máquina virtual donde ejecutas comandos
 
 # Dependencias
 
-* jdk21
+* jdk22
 
 # Instalación
 ```bash
 git clone https://github.com/MIK0ZZ/theMacHine.git
 cd theMacHine
-#insertar aqui el codigo de ejecucion de java que ahora mismo no me acuerdo
+#Abre tu ide aqui
 ```
+
+# Imágenes
+![[terminal.png]]
+> Terminal del programa
+
+![[code.png]]
+> Código del programa
