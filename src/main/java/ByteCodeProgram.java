@@ -60,7 +60,7 @@ public class ByteCodeProgram {
      * @return
      */
     public boolean replaceByteCode(ByteCode _byteCode, int _i) {
-        if(_i >= this.numElements) {
+        if(_i >= this.numElements || _i <= -1) {
             return false;
         }
         else {
