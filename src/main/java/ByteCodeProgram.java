@@ -16,7 +16,11 @@ public class ByteCodeProgram {
     public String toString() {
         String chain = "Programa almacenado:\n";
         for (int i = 0; i < this.numElements; i++) {
-            chain += i + ": " + this.program[i].getName() + " " + this.program[i].getParam() + "\n";
+            if(this.program[i].getParam() == 0) {
+                chain += i + ": " + this.program[i].getName() + "\n";
+            } else {
+                chain += i + ": " + this.program[i].getName() + " " + this.program[i].getParam() + "\n";
+            }
         }
         return chain;
     }
@@ -56,8 +60,13 @@ public class ByteCodeProgram {
      * @return
      */
     public boolean replaceByteCode(ByteCode _byteCode, int _i) {
-        this.program[_i] = _byteCode;
-        return true;
+        if(_i >= this.numElements) {
+            return false;
+        }
+        else {
+            this.program[_i] = _byteCode;
+            return true;
+        }
     }
 
     /**
