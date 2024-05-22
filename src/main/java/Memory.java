@@ -54,7 +54,7 @@ public class Memory {
     public boolean write(int _pos, int _value) {
         if (_pos >= 0) {
             this.isEmpty = false;
-            this.resize(_pos);
+            resize(_pos);
             this.memory[_pos] = _value;
             return true;
         } else {

@@ -76,7 +76,7 @@ public class CPU {
      * @return
      */
     public boolean push(int _n) {
-        this.runCPU();
+        runCPU();
         this.pila.push(_n);
         return true;
     }
@@ -86,7 +86,7 @@ public class CPU {
      * @return
      */
     public boolean sumaPila() {
-        this.runCPU();
+        runCPU();
         if(!this.pila.isEmpty()) {
             int e1 = this.pila.pop();
             if(!this.pila.isEmpty()) {
@@ -108,7 +108,7 @@ public class CPU {
      * @return
      */
     public boolean restarPila() {
-        this.runCPU();
+        runCPU();
         if(!this.pila.isEmpty()) {
             int e1 = this.pila.pop();
             if(!this.pila.isEmpty()) {
@@ -130,7 +130,7 @@ public class CPU {
      * @return
      */
     public boolean multiplicarPila() {
-        this.runCPU();
+        runCPU();
         if(!this.pila.isEmpty()) {
             int e1 = this.pila.pop();
             if(!this.pila.isEmpty()) {
@@ -152,7 +152,7 @@ public class CPU {
      * @return
      */
     public boolean dividirPila() {
-        this.runCPU();
+        runCPU();
         if(!this.pila.isEmpty()) {
             int e1 = this.pila.pop();
             if(!this.pila.isEmpty()) {
@@ -175,7 +175,7 @@ public class CPU {
      * @return
      */
     public boolean storeMemoria(int _pos) {
-        this.runCPU();
+        runCPU();
         this.memoria.write(_pos, this.pila.pop());
         return true;
     }
@@ -186,7 +186,7 @@ public class CPU {
      * @return
      */
     public boolean loadMemoria(int _pos) {
-        this.runCPU();
+        runCPU();
         this.pila.push(this.memoria.read(_pos));
         return true;
     }
@@ -196,7 +196,7 @@ public class CPU {
      * @return
      */
     public boolean outPila() {
-        this.runCPU();
+        runCPU();
         int temp = this.pila.pop();
         this.pila.push(temp);
         System.out.println("La cima de la pila es: " + temp);

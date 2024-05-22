@@ -39,7 +39,7 @@ public class OperandStack {
      * @return
      */
     public int pop() {
-        if(this.isEmpty()) {
+        if(isEmpty()) {
             return -1;
         } else {
             int ultimo = this.stack[this.num_elements - 1];
@@ -55,7 +55,7 @@ public class OperandStack {
      */
     public String toString() {
         String cadena = "Pila: ";
-        if (this.isEmpty()) {
+        if (isEmpty()) {
             return cadena += "---";
         } else {
             for(int i = 0; i < this.num_elements; i++) {

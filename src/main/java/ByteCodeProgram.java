@@ -56,7 +56,6 @@ public class ByteCodeProgram {
      * @return
      */
     public boolean replaceByteCode(ByteCode _byteCode, int _i) {
-
         this.program[_i] = _byteCode;
         return true;
     }
